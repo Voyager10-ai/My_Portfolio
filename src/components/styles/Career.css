@@ -1,0 +1,251 @@
+.career-section {
+  position: relative;
+  padding: 100px 0;
+  background-color: transparent;
+  /* Assuming main background is handled by parent or body */
+  color: #fff;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+
+.section-title {
+  font-size: 60px;
+  margin-bottom: 80px;
+  text-align: center;
+  background: linear-gradient(180deg, #fff, #a855f7);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+}
+
+.section-title span {
+  color: #a855f7;
+  -webkit-text-fill-color: #a855f7;
+  font-weight: 300;
+  font-style: italic;
+  margin: 0 10px;
+}
+
+.timeline-container {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  padding: 20px;
+}
+
+/* The Vertical Glowing Line */
+.timeline-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: #a855f7;
+  transform: translateX(-50%);
+  box-shadow: 0 0 15px #a855f7, 0 0 30px #a855f7;
+  z-index: 0;
+}
+
+.timeline-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+/* Left Column */
+.timeline-left {
+  flex: 1;
+  text-align: right;
+  padding-right: 40px;
+}
+
+.timeline-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0 0 5px 0;
+  color: #fff;
+}
+
+.timeline-subtitle {
+  font-size: 16px;
+  font-weight: 400;
+  color: #ccc;
+  margin: 0;
+}
+
+/* Center Column */
+.timeline-center {
+  flex: 0 0 240px;
+  /* Increased width for longer years */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.timeline-year {
+  font-size: 28px;
+  font-weight: 900;
+  color: #fff;
+  text-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
+  background-color: #05010f;
+  /* Match page bg to hide line if needed, or use text-shadow */
+  padding: 5px 10px;
+  z-index: 2;
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(168, 85, 247, 0.2);
+  white-space: nowrap;
+}
+
+.timeline-dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 12px;
+  height: 12px;
+  background-color: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #fff, 0 0 20px #a855f7, 0 0 40px #a855f7;
+  z-index: 1;
+  display: none;
+  /* Hidden by default if we want Year to be the center, toggling based on preference */
+}
+
+/* Let's show the dot glowing behind the year or just make the year the focal point */
+/* Requirement: "Glowing dot at each timeline point" */
+/* Let's put the dot BEHIND the year or above/below it? */
+/* Or maybe the dot is ON the line, and year is just text. */
+/* Let's refine: Dot is strictly on the line. Year is the content. */
+
+.timeline-center .timeline-dot {
+  display: block;
+  width: 16px;
+  height: 16px;
+  background: #a855f7;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #a855f7, 0 0 20px #a855f7, 0 0 40px #a855f7;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  /* Behind the year text box if they overlap, or purely decorative on the line */
+}
+
+
+/* Right Column */
+.timeline-right {
+  flex: 1;
+  text-align: left;
+  padding-left: 40px;
+}
+
+.timeline-description {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #ddd;
+  margin: 0;
+  max-width: 90%;
+}
+
+
+/* Responsive Design */
+@media (max-width: 900px) {
+  .section-title {
+    font-size: 40px;
+    margin-bottom: 50px;
+  }
+
+  .timeline-container {
+    gap: 40px;
+    padding: 10px;
+  }
+
+  /* Stack to a more traditional vertical timeline on mobile */
+  .timeline-line {
+    left: 20px;
+    /* Move line to left */
+    transform: none;
+  }
+
+  .timeline-row {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 50px;
+    /* Space for line */
+    border-left: 2px solid transparent;
+    /* Alignment help */
+    padding-bottom: 30px;
+  }
+
+  .timeline-left {
+    text-align: left;
+    padding-right: 0;
+    margin-bottom: 5px;
+    order: 1;
+  }
+
+  .timeline-center {
+    flex: auto;
+    width: auto;
+    order: 2;
+    margin-bottom: 10px;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  .timeline-year {
+    background: none;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+    color: #a855f7;
+    font-size: 20px;
+    text-shadow: none;
+  }
+
+  .timeline-center .timeline-dot {
+    /* Move dot to the line on the left */
+    left: -31px;
+    /* Adjust based on margin-left of row (50px) and line position (20px) + thickness */
+    /* Line is at left: 20px. 
+           Row starts at margin-left: 50px. 
+           So relative to Row, line is at -30px.
+        */
+    right: auto;
+    top: 0px;
+    /* Align with top of content */
+    transform: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #a855f7;
+    opacity: 1;
+    filter: none;
+    box-shadow: 0 0 10px #a855f7;
+  }
+
+  .timeline-right {
+    text-align: left;
+    padding-left: 0;
+    order: 3;
+    max-width: 100%;
+  }
+
+  .timeline-description {
+    max-width: 100%;
+  }
+}
