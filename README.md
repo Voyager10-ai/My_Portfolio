@@ -7,6 +7,7 @@ A high-performance, immersive developer portfolio built with modern web technolo
 🔗 **Live Demo:** [https://my-portfolio-jgst.vercel.app/](https://my-portfolio-jgst.vercel.app/)
 
 ## 🛠 Tech Stack
+![Uploading portfolio-screenshot.png…]()
 
 *   **React** - UI Library
 *   **TypeScript** - Static Typing
